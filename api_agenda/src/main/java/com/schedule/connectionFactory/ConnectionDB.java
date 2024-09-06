@@ -1,4 +1,4 @@
-package com.schedule.connectionDataConfig;
+package com.schedule.connectionFactory;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-public class DataConfig {
+public class ConnectionDB {
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
