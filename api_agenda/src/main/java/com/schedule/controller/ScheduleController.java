@@ -1,4 +1,4 @@
-package com.schedule.controller;
+ package com.schedule.controller;
 
 import com.schedule.dtos.AppointmentRequestDTO;
 import com.schedule.dtos.AppointmentUpdateRequestDTO;
@@ -21,7 +21,7 @@ public class ScheduleController {
     @Autowired
     private AppointmentService appointmentService;
 
-    // Inserir novo compromisso
+    // Insere novo compromisso
     @PostMapping("/appointments/add")
     public ResponseEntity<?> insertAppointment(@Valid @RequestBody AppointmentRequestDTO appointmentRequest) {
         boolean isInserted = appointmentService.addAppointment(appointmentRequest);
@@ -32,7 +32,7 @@ public class ScheduleController {
         }
     }
 
-    // Atualizar compromisso
+    // Atualiza compromisso
     @PostMapping("/appointments/update")
     public ResponseEntity<?> updateAppointment(@Valid @RequestBody AppointmentUpdateRequestDTO appointmentRequest) {
         boolean isUpdated = appointmentService.updateAppointment(appointmentRequest);
@@ -43,7 +43,7 @@ public class ScheduleController {
         }
     }
 
-    // Excluir compromisso
+    // Exclui compromisso
     @DeleteMapping("/appointments/delete/{id}")
     public ResponseEntity<?> deleteAppointment(@PathVariable("id") int idSchedule) {
         boolean isDeleted = appointmentService.deleteAppointment(idSchedule);
@@ -54,7 +54,7 @@ public class ScheduleController {
         }
     }
 
-    // Verificar compromissos em uma data específica
+    // Verifica compromissos em uma data específica
     @GetMapping("/appointments")
     public ResponseEntity<List<Map<String, Object>>> checkAppointments(@RequestParam("date") String date) {
         List<Appointment> appointments = appointmentService.getAppointmentsByDate(date);
@@ -71,14 +71,14 @@ public class ScheduleController {
         return ResponseEntity.ok(results);
     }
 
-    // Verificar se existe algum compromisso em uma data específica
+    // Verifica se existe algum compromisso em uma data específica
     @GetMapping("/appointments/check")
     public ResponseEntity<Boolean> hasAppointment(@RequestParam("date") String date) {
         boolean hasAppointment = appointmentService.hasAppointmentOnDate(date);
         return ResponseEntity.ok(hasAppointment);
     }
 
-    // Verificar compromissos de um mês
+    // Verifica compromissos de um mês
     @GetMapping("/appointments/month")
     public ResponseEntity<List<Map<String, Object>>> getAppointmentsByMonth(@RequestParam("yearMonth") String yearMonth) {
         List<Appointment> appointments = appointmentService.getAppointmentsByMonth(yearMonth);

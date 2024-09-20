@@ -4,15 +4,17 @@ import jakarta.validation.constraints.NotNull;
 
 public class AppointmentUpdateRequestDTO extends AppointmentRequestDTO {
 
-    @NotNull(message = "idSchedule is required")
-    private Integer idSchedule;
+    @NotNull(message = "O campo 'idSchedule' é obrigatório")
+    private final Integer idSchedule;
 
-    // Getters and Setters
-    public Integer getIdSchedule() {
-        return idSchedule;
+    // Construtor que chama o super do AppointmentRequestDTO
+    public AppointmentUpdateRequestDTO(Integer idSchedule, String daySchedule, String initialScheduledTime, String finalScheduledTime, String description) {
+        super(daySchedule, initialScheduledTime, finalScheduledTime, description);
+        this.idSchedule = idSchedule;
     }
 
-    public void setIdSchedule(Integer idSchedule) {
-        this.idSchedule = idSchedule;
+    // Getter
+    public Integer getIdSchedule() {
+        return idSchedule;
     }
 }
